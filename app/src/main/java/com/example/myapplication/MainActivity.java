@@ -15,6 +15,7 @@ import com.example.myapplication.activity.BannerTestActivity;
 import com.example.myapplication.activity.ConstraintActivity;
 import com.example.myapplication.activity.DefineToastActivity;
 import com.example.myapplication.activity.DotActivity;
+import com.example.myapplication.activity.GitUsingActivity;
 import com.example.myapplication.activity.LaunchModelActivity;
 import com.example.myapplication.activity.SaveTestActivity;
 import com.example.myapplication.activity.ScrollViewActivity;
@@ -252,6 +253,10 @@ public class MainActivity extends Activity {
         bean33.setName("ScrollView 嵌套测试");
         bean33.setActivity(ScrollViewActivity.class);
         list.add(bean33);
+        ActivityBean bean34 = new ActivityBean();
+        bean34.setName("git 命令集合");
+        bean34.setActivity(GitUsingActivity.class);
+        list.add(bean34);
     }
 
     private void findViews() {

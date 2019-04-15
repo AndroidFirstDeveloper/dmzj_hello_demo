@@ -287,7 +287,10 @@
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".activity.GitUsingActivity"></activity>
+        <activity android:name=".activity.GitUsingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>
