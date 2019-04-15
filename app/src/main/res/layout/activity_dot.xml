@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".activity.DotActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_dot_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        app:title="打点sdk测试"
+        app:titleTextColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/activity_dot_insert_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_margin="20dp"
+        android:text="插入一条数据"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/activity_dot_select_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="查询所有打点数据"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/activity_dot_show_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="弹出Dialog"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <SeekBar
+        android:layout_marginTop="20dp"
+        android:id="@+id/activity_dot_seekbar"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:progress="30"
+        android:max="100"
+        android:foreground="@android:color/holo_orange_dark"
+        android:background="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
+
+</LinearLayout>

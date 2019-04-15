@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        tools:context=".constraints.ConstraintActivity">
+
+        <TextView
+            android:id="@+id/activity_constraint_relative_positioning_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="相对定位 (Relative positioning)"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/activity_constraint_button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_relative_positioning_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button1"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_relative_positioning_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button2"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_relative_positioning_tv" />
+
+        <TextView
+            android:id="@+id/activity_constraint_gone_margins_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="Gone Margins"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button3" />
+
+        <Button
+            android:id="@+id/activity_constraint_button4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="A"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_gone_margins_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="B"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button4"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_gone_margins_tv"
+            app:layout_goneMarginLeft="132dp" />
+
+        <TextView
+            android:id="@+id/activity_constraint_center_positioning_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="居中定位和倾向（Centering positioning and bias）"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button5" />
+
+        <Button
+            android:id="@+id/activity_constraint_button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_center_positioning_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button6" />
+
+        <Button
+            android:id="@+id/activity_constraint_button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button7" />
+
+
+        <TextView
+            android:id="@+id/activity_constraint_dimensions_constraints_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="尺寸约束（Dimensions constraints）"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button8" />
+
+        <Button
+            android:id="@+id/activity_constraint_button9"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:text="A"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_dimensions_constraints_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="B"
+            app:layout_constraintLeft_toLeftOf="@+id/activity_constraint_button9"
+            app:layout_constraintRight_toRightOf="@+id/activity_constraint_button9"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button9" />
+
+        <Button
+            android:id="@+id/activity_constraint_button11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="C"
+            app:layout_constraintLeft_toLeftOf="@+id/activity_constraint_button10"
+            app:layout_constraintRight_toRightOf="@+id/activity_constraint_button10"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button10" />
+
+
+        <TextView
+            android:id="@+id/activity_constraint_ratio_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="比例（Ratio）"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button11" />
+
+        <Button
+            android:id="@+id/activity_constraint_button12"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:text="A"
+            app:layout_constraintDimensionRatio="2:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_ratio_tv" />
+
+        <ImageView
+            android:id="@+id/activity_constraint_image_view1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H,690:388"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button12" />
+
+        <ImageView
+            android:id="@+id/activity_constraint_image_view2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="690:388"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_image_view1"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/activity_constraint_image_view3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="690:388"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_image_view2"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/activity_constraint_spread_chain_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="Spread Chain"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_image_view3" />
+
+        <Button
+            android:id="@+id/activity_constraint_button13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button14"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_spread_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button13"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button15"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_spread_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button14"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_spread_chain_tv" />
+
+        <TextView
+            android:id="@+id/activity_constraint_spread_inside_chain_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="SpreadInside Chain"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button15" />
+
+        <Button
+            android:id="@+id/activity_constraint_button16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button17"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_spread_inside_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button16"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button18"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_spread_inside_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button17"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_spread_inside_chain_tv" />
+
+
+        <TextView
+            android:id="@+id/activity_constraint_weight_chain_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="Spread Chain With Weight"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button18" />
+
+        <Button
+            android:id="@+id/activity_constraint_button19"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:text="A"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button20"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_weight_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:text="B"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button19"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button21"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_weight_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button21"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_dark"
+            android:text="C"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button20"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_weight_chain_tv" />
+
+        <TextView
+            android:id="@+id/activity_constraint_packed_chain_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="Packed Chain"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button21" />
+
+        <Button
+            android:id="@+id/activity_constraint_button22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:text="A"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button23"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_packed_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:text="B"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button22"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button24"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_packed_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_dark"
+            android:text="C"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button23"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_packed_chain_tv" />
+
+        <TextView
+            android:id="@+id/activity_constraint_packed_bias_chain_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="Packed Chain With Bias"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button24" />
+
+        <Button
+            android:id="@+id/activity_constraint_button25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:text="A"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button26"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_packed_bias_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:text="B"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button25"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button27"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_packed_bias_chain_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_dark"
+            android:text="C"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button26"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_packed_bias_chain_tv" />
+
+        <TextView
+            android:id="@+id/activity_constraint_guideline_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="GuideLine"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button27" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/activity_constraint_guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <Button
+            android:id="@+id/activity_constraint_button28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_dark"
+            android:text="A"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_guideline_tv" />
+
+        <TextView
+            android:id="@+id/activity_constraint_barrier_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="Barrier（屏障）"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button28" />
+
+        <TextView
+            android:id="@+id/activity_constraint_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="姓名："
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_constraint_name_et"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/activity_constraint_name_et" />
+
+        <TextView
+            android:id="@+id/activity_constraint_contact_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系方式："
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_constraint_contact_et"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/activity_constraint_contact_et" />
+
+        <EditText
+            android:id="@+id/activity_constraint_name_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="姓名"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_barrier"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_barrier_tv" />
+
+        <EditText
+            android:id="@+id/activity_constraint_contact_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="联系方式"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_barrier"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_name_et" />
+
+        <android.support.constraint.Barrier
+            android:id="@+id/activity_constraint_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="activity_constraint_name_tv,activity_constraint_contact_tv" />
+
+        <TextView
+            android:id="@+id/activity_constraint_group_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="Group（组合）"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_contact_et" />
+
+        <android.support.constraint.Group
+            android:id="@+id/activity_constraint_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="activity_constraint_button29,activity_constraint_button30,activity_constraint_button31" />
+
+        <Button
+            android:id="@+id/activity_constraint_button29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button30"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_group_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button29"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button31"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_group_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button30"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_group_tv" />
+
+        <TextView
+            android:id="@+id/activity_constraint_constrained_width_tv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f1f1f1"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="12dp"
+            android:text="Constrained Width（强制约束）"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button31" />
+
+        <!-- 通过效果图可以得出，给 B 控件添加的左右约束失效。为了防止约束失效，
+         在 1.1.0 版本中新增了app:layout_constrainedWidth="true"属性。注意控件的左右都应该有约束条件-->
+
+        <Button
+            android:id="@+id/activity_constraint_button32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_red_dark"
+            android:text="AAAAAAAAAAA"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_constrained_width_tv" />
+
+        <Button
+            android:id="@+id/activity_constraint_button33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:text="BBBBBBBBBBB"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button32"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button32" />
+
+        <Button
+            android:id="@+id/activity_constraint_button34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/holo_red_dark"
+            android:text="AAAAAAAAAAA"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/activity_constraint_button35"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button33" />
+
+        <Button
+            android:id="@+id/activity_constraint_button35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/holo_green_dark"
+            android:text="BBBBBBBBBBB"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintLeft_toRightOf="@+id/activity_constraint_button34"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button33" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>

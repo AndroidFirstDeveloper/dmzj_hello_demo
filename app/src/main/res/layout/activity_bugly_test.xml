@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/activity_bugly_test_btn1"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:text="bugly 崩溃测试"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/activity_bugly_test_btn2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:text="null 测试"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/activity_bugly_test_btn3"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:text="IO 测试"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/activity_bugly_test_btn4"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:text="非主线程操作UI 测试"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/activity_bugly_test_btn5"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:text="类型转换 测试"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/activity_bugly_test_btn6"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:text="检查更新"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/activity_bugly_test_btn7"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="12dp"
+        android:text="gson"
+        android:textAllCaps="false" />
+</LinearLayout>

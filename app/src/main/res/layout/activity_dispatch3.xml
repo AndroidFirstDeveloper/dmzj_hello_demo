@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".dispatch.DispatchActivity3">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_dispatch3_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?android:actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.myapplication.dispatch.HorizontalSub
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_dispatch3_toolbar">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/activity_dispatch3_imageview"
+                android:layout_width="1000dp"
+                android:layout_height="300dp"
+                android:background="@android:color/black"
+                android:scaleType="centerCrop" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/activity_dispatch3_recyclerview"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@android:color/holo_blue_dark" />
+        </LinearLayout>
+    </com.example.myapplication.dispatch.HorizontalSub>
+
+</android.support.constraint.ConstraintLayout>

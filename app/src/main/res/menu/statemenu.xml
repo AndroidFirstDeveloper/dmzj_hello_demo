@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/loading_data_item"
+        android:title="加载数据"
+        app:showAsAction="ifRoom"
+        ></item>
+    <item android:id="@+id/net_error_item"
+        android:title="网络错误"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/vector_drawable_net_error"
+        ></item>
+    <item android:id="@+id/loading_error_item"
+        android:title="加载错误"
+        app:showAsAction="never"
+        android:icon="@drawable/vector_drawable_loading_error"
+        ></item>
+    <item android:id="@+id/empty_item"
+        android:title="数据为空"
+        app:showAsAction="never"
+        android:icon="@drawable/vector_drawable_empty_data"
+        ></item>
+    <item android:id="@+id/loading_success_item"
+        android:title="加载成功"
+        app:showAsAction="never"
+        ></item>
+
+</menu>

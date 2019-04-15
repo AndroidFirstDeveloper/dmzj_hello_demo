@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/test_item0"
+        android:icon="@drawable/vector_drawable_saomiao"
+        android:title="扫描"
+        app:showAsAction="always"></item>
+    <item
+        android:id="@+id/test_item1"
+        android:title="提交"
+        app:showAsAction="always"></item>
+    <item
+        android:id="@+id/test_item2"
+        android:title="上传"
+        app:showAsAction="never"></item>
+    <item
+        android:id="@+id/test_item3"
+        android:title="打印"
+        app:showAsAction="never"></item>
+
+</menu>

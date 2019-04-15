@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
+
+    <!--设置工具栏主题-->
+    <style name="Toolbar.Theme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
+
+    <!--设置工具栏主标题字体大小-->
+    <style name="Toolbar.TitleTextSize" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--设置工具栏弹出菜单样式-->
+    <style name="Toolbar.PopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="android:colorBackground">@android:color/holo_purple</item>
+        <item name="android:textColor">@android:color/holo_green_dark</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--把该属性改为false即可使menu位置位于toolbar之下-->
+    </style>
+
+    <style name="TestToolbar.Theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorSecondary">@android:color/holo_orange_light</item>
+        <item name="actionMenuTextColor">@android:color/holo_purple</item>
+    </style>
+
+    <style name="TestToolbar.PopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="android:colorBackground">@android:color/holo_green_dark</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+        <!--<item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>-->
+    </style>
+
+    <style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">
+        <item name="android:src">@drawable/vector_drawable_more</item>
+    </style>
+
+
+    <style name="AppTheme.Slide" parent="Theme.AppCompat">
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--&lt;!&ndash;Required&ndash;&gt;-->
+        <!--<item name="windowActionBar">false</item>-->
+        <!--<item name="windowNoTitle">false</item>-->
+        <!--&lt;!&ndash;<item name="windowNoTitle">false</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="windowActionBar">false</item>&ndash;&gt;-->
+        <!--<item name="android:windowBackground">@android:color/holo_red_dark</item>-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowAnimationStyle">@style/AppTheme.Slide.Animation</item>-->
+    </style>
+
+</resources>

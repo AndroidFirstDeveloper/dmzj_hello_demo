@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aspsine.swipetoloadlayout.SwipeToLoadLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_banner_test_swipelayout"
+    tools:context=".activity.BannerTestActivity">
+    <com.example.myapplication.refresh.RefreshView
+        android:id="@+id/swipe_refresh_header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/swipe_target"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.youth.banner.Banner
+                android:id="@+id/activity_banner_test_banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                app:indicator_drawable_selected="@drawable/select_indicator_bg"
+                app:indicator_drawable_unselected="@drawable/unselect_indicator_bg"
+                app:indicator_height="10dp"
+                app:indicator_margin="10dp"
+                app:indicator_width="10dp">
+
+            </com.youth.banner.Banner>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</com.aspsine.swipetoloadlayout.SwipeToLoadLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    tools:context=".activity.ConstraintActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/activity_constraint_toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/activity_constraint_content_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:lineSpacingMultiplier="1.3"
+            android:text="layout_constraintDimensionRatio 属性使用总结：能计算的话 W:H=ratio；不能计算的话 H:W=ratio；不管'xxx,3:1'中的xxx是H或者是W。\n 解释：“能计算”就是xxx这条边的值为0dp；“不能计算”就是xxx这条边的值为100dp；我们把xxx看成要求解的那个边，如果这个边是0dp说明这条边需要通过计算求出来，就看成能计算；如果这条边已经是一个已知的值，则不需要求解了，就看成不能计算。"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_toolbar1" />
+
+
+
+        <ImageView
+            android:id="@+id/activity_constraint_iv1"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintDimensionRatio="W,3:5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_content_tv" />
+
+        <ImageView
+            android:id="@+id/activity_constraint_iv2"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintDimensionRatio="H,3:5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_iv1" />
+
+
+        <ImageView
+            android:id="@+id/activity_constraint_iv3"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintDimensionRatio="W,3:5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_iv2" />
+
+        <ImageView
+            android:id="@+id/activity_constraint_iv4"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintDimensionRatio="H,3:5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_iv3" />
+
+        <ImageView
+            android:id="@+id/activity_constraint_iv5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintDimensionRatio="H,3:5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_iv4" />
+
+        <ImageView
+            android:id="@+id/activity_constraint_iv6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_red_dark"
+            app:layout_constraintDimensionRatio="W,3:5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_constraint_iv5" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>

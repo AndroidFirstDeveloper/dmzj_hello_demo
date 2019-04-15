@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:background="@color/colorPrimary"
+        android:id="@+id/activity_dispatch_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize" />
+
+    <com.example.myapplication.dispatch.ViewGroupSub
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_dark"
+        tools:context=".dispatch.DispatchActivity">
+
+
+        <com.example.myapplication.dispatch.ViewSub
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@android:color/holo_green_dark" />
+
+    </com.example.myapplication.dispatch.ViewGroupSub>
+</LinearLayout>

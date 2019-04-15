@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".multistate.BaseActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true"
+        app:title="多种展示状态测试"
+        app:titleTextColor="@android:color/black"></android.support.v7.widget.Toolbar>
+
+    <com.example.myapplication.multistate.MultiStateView
+        android:id="@+id/multistateview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:empty_layout="@layout/empty_data_layout"
+        app:loading_error_layout="@layout/loading_error_layout"
+        app:loading_normal_layout="@layout/loading_data_layout"
+        app:net_error_layout="@layout/net_error_layout"></com.example.myapplication.multistate.MultiStateView>
+
+</LinearLayout>
