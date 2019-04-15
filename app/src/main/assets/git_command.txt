@@ -1,0 +1,58 @@
+﻿git add .  添加所有文件
+git add readme.txt
+git Init
+git commit -m "add a new file"
+git status 查看变化文件
+git diff readme.txt 查看具体文件变化内容
+git log  查看所有提交记录
+git log --pretty=oneline  查看所有提交记录(简化版记录)
+git reset --hard head^  回退到上一个版本
+git reset --hard head^^ 回退到上上版本
+git reset --hard head～n 回退到之前的第n个版本
+git reset --hard head commitID 回到指定版本
+git reflog 查看所有操作过程，从中可以查看commitID
+git checkout -- readme.txt  撤销文件工作区的修改
+git reset HEAD readme.txt 撤销文件暂存区的修改
+git reset --hard HEAD～commitID 撤销文件仓库的修改，规范点说:回到某个版本
+git rm readme.txt  删除文件
+git checkout -- readme.txt 撤销工作区的修改,包括文件的删除，但是恢复的文件只能是最近一次提交的文件，最近一次提交后进行的修改会丢失
+git branch 查看分支(分支列表中带*的表示当前分支)
+git branch <name> 创建分支
+git checkout <name> 切换分支
+git checkout -b <name> 创建并切换分支
+git merge <name> 合并分支(合并<name>分支到当前分支)
+git branch -d <name> 删除分支
+git merge --no--ff-m "merge message" <name> 合并分支，禁用Fast forward
+git stash “储藏”当前工作现场，可以先不进行提交，达到保存的目的
+git stash list 查看“储藏”的工作现场有哪些
+git stash pop 恢复现场，恢复同时把stash内容删除
+git stash apply <name> 恢复现场，恢复后不会自动删除stash内容，需要git stash drop<name>删除
+git branch -D <name> 强行删除没有合并过的分支
+
+git checkout -b dev origin/dev   创建远程dev分支到本地
+
+git remote -v  查看远程库的信息
+
+git push origin dev 推送到远程库的分支(如果远程库没有dev分支则创建dev分支)
+
+git pull  拉取远程分支中的内容（如果向远程分支推送失败的话，先拉取一下，拉取之后合并完冲突，本地再提交，最后再推送到远程库）
+
+git branch --set-upstream-to=origin/dev dev   创建本地dev分支和远程分支的链接（第一次拉取的时候可能失败，就是因为没有建立链接）
+
+git tag  查看标签列表
+
+git tag <name> 创建标签，默认指向当前分支最新提交。
+
+git tag <name>  commit_id 创建标签，指向指定提交
+
+git tag -a "说明" <name>  commit_id  创建标签，并添加说明，指定设置标签的提交
+
+git tag -d <tagname> 删除本地标签
+
+git push origin <tagname>  推送标签到远程库
+
+git push origin --tags 推送所有标签到远程
+
+git push origin  refs/tag/<tagname>  如果标签推送到了远程想要删除先删除本地，再使用还命令
+
+在准备向GitHub仓库推送代码前，首先检查自己电脑中是否已经有秘钥文件id_rsa、id_rsa.pub如果有的话，把id_rsa.pub公钥文件中的内容复制，粘贴到GitHub账号的 SSH Key页面中。如果没有的话打开git bush，输入 $ ssh-keygen -t rsa -C "youremail@example.com" 生成秘钥文件。需要添加公钥到GitHub的是因为，git本地仓库和GitHub仓库传输是通过SSH加密的，为了保证是本人向GitHub仓库中提交，所以GitHub通过公钥判断，GitHub允许添加多个公钥，保证用户在多台设备上提交内容。
