@@ -15,8 +15,11 @@ import com.example.myapplication.activity.BannerTestActivity;
 import com.example.myapplication.activity.ConstraintActivity;
 import com.example.myapplication.activity.DefineToastActivity;
 import com.example.myapplication.activity.DotActivity;
+import com.example.myapplication.activity.FragmentLifeCycleActivity;
 import com.example.myapplication.activity.GitUsingActivity;
+import com.example.myapplication.activity.GuideActivity;
 import com.example.myapplication.activity.LaunchModelActivity;
+import com.example.myapplication.activity.ListActivity;
 import com.example.myapplication.activity.SaveTestActivity;
 import com.example.myapplication.activity.ScrollViewActivity;
 import com.example.myapplication.activity.WebActivity;
@@ -76,6 +79,7 @@ public class MainActivity extends Activity {
         initData();
         findViews();
         initPage();
+        new JavaTest();
     }
 
     private void initPage() {
@@ -257,6 +261,25 @@ public class MainActivity extends Activity {
         bean34.setName("git 命令集合");
         bean34.setActivity(GitUsingActivity.class);
         list.add(bean34);
+        ActivityBean bean35 = new ActivityBean();
+        bean35.setName("集合的相关操作");
+        bean35.setActivity(ListActivity.class);
+        list.add(bean35);
+
+        ActivityBean bean36 = new ActivityBean();
+        bean36.setName("Fragment 生命周期");
+        bean36.setActivity(FragmentLifeCycleActivity.class);
+        list.add(bean36);
+
+        ActivityBean bean37 = new ActivityBean();
+        bean37.setName("事件分发测试");
+        bean37.setActivity(com.example.myapplication.activity.DispatchActivity.class);
+        list.add(bean37);
+
+        ActivityBean bean38 = new ActivityBean();
+        bean38.setName("引导页");
+        bean38.setActivity(GuideActivity.class);
+        list.add(bean38);
     }
 
     private void findViews() {

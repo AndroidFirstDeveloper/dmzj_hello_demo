@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".activity.ListActivity">
+
+
+    <Button
+        android:id="@+id/activity_list_first_btn"
+        android:text="去除集合中的重复元素"
+        android:textAllCaps="false"
+        android:layout_margin="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+    <Button
+        android:id="@+id/activity_list_second_btn"
+        android:text="获取两个集合中的并集、差集、交集"
+        android:textAllCaps="false"
+        android:layout_margin="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+</LinearLayout>
