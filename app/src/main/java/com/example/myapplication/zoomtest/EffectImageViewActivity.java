@@ -85,7 +85,7 @@ public class EffectImageViewActivity extends AppCompatActivity {
                         int top = layout.getLineTop(3);
                         int bottom = layout.getLineBottom(3);
 
-                        Drawable drawable = getResources().getDrawable(R.mipmap.display_all);
+                        Drawable drawable = getResources().getDrawable(R.drawable.display_all);
                         drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
                         int drawableWidth = drawable.getMinimumWidth();
                         int drawableHeight = drawable.getMinimumHeight();

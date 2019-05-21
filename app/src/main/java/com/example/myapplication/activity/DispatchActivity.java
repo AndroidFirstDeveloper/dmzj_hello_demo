@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.myapplication.Constant;
 import com.example.myapplication.R;
 import com.gyf.barlibrary.ImmersionBar;
 
@@ -30,6 +31,8 @@ public class DispatchActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_dispatch6);
         findView();
         initDialog();
+
+        Log.e(TAG, "onCreate: " + Constant.CARTOON_REQUEST);
     }
 
     private void findView() {

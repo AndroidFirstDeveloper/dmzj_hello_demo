@@ -3,60 +3,60 @@
     android:oneshot="false">
 
     <item
-        android:drawable="@mipmap/spinner_01"
+        android:drawable="@drawable/spinner_01"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_02"
+        android:drawable="@drawable/spinner_02"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_03"
+        android:drawable="@drawable/spinner_03"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_04"
+        android:drawable="@drawable/spinner_04"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_05"
+        android:drawable="@drawable/spinner_05"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_06"
+        android:drawable="@drawable/spinner_06"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_07"
+        android:drawable="@drawable/spinner_07"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_08"
+        android:drawable="@drawable/spinner_08"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_09"
+        android:drawable="@drawable/spinner_09"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_10"
+        android:drawable="@drawable/spinner_10"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_11"
+        android:drawable="@drawable/spinner_11"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_12"
+        android:drawable="@drawable/spinner_12"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_13"
+        android:drawable="@drawable/spinner_13"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_14"
+        android:drawable="@drawable/spinner_14"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_15"
+        android:drawable="@drawable/spinner_15"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_16"
+        android:drawable="@drawable/spinner_16"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_17"
+        android:drawable="@drawable/spinner_17"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_18"
+        android:drawable="@drawable/spinner_18"
         android:duration="36"></item>
     <item
-        android:drawable="@mipmap/spinner_19"
+        android:drawable="@drawable/spinner_19"
         android:duration="36"></item>
 </animation-list>

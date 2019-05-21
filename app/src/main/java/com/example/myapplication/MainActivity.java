@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,9 +18,11 @@ import com.example.myapplication.activity.DefineToastActivity;
 import com.example.myapplication.activity.DotActivity;
 import com.example.myapplication.activity.FragmentLifeCycleActivity;
 import com.example.myapplication.activity.GitUsingActivity;
+import com.example.myapplication.activity.GroupActivity;
 import com.example.myapplication.activity.GuideActivity;
 import com.example.myapplication.activity.LaunchModelActivity;
 import com.example.myapplication.activity.ListActivity;
+import com.example.myapplication.activity.PictureActivity;
 import com.example.myapplication.activity.SaveTestActivity;
 import com.example.myapplication.activity.ScrollViewActivity;
 import com.example.myapplication.activity.WebActivity;
@@ -280,6 +283,16 @@ public class MainActivity extends Activity {
         bean38.setName("引导页");
         bean38.setActivity(GuideActivity.class);
         list.add(bean38);
+
+        ActivityBean bean39 = new ActivityBean();
+        bean39.setName("选择相片");
+        bean39.setActivity(PictureActivity.class);
+        list.add(bean39);
+
+        ActivityBean bean40 = new ActivityBean();
+        bean40.setName("分组列表");
+        bean40.setActivity(GroupActivity.class);
+        list.add(bean40);
     }
 
     private void findViews() {

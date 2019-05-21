@@ -49,7 +49,7 @@
             android:layout_alignBottom="@+id/activity_effect_content_tv"
             android:layout_alignParentRight="true"
             android:layout_gravity="right|bottom"
-            android:src="@mipmap/display_all" />
+            android:src="@drawable/display_all" />
     </RelativeLayout>
 
 

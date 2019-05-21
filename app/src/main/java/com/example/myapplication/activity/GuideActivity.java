@@ -39,7 +39,7 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
 
 //        ImageView activity_guid_iv = findViewById(R.id.activity_guid_iv);
 //        Glide.with(this)
-//                .load(R.mipmap.guide_page1)
+//                .load(R.drawable.guide_page1)
 //                .into(activity_guid_iv);
 
 
@@ -50,7 +50,7 @@ public class GuideActivity extends AppCompatActivity implements ViewPager.OnPage
 
     private static class MyAdapter extends PagerAdapter {
         private Context context;
-        private Integer[] ids = new Integer[]{R.mipmap.guide_page1, R.mipmap.guide_page2, R.mipmap.guide_page3, R.mipmap.guide_page4,R.mipmap.guide_page5};
+        private Integer[] ids = new Integer[]{R.drawable.guide_page1, R.drawable.guide_page2, R.drawable.guide_page3, R.drawable.guide_page4,R.drawable.guide_page5};
 
         public MyAdapter(Context context) {
             super();

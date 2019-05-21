@@ -19,6 +19,55 @@ public class JavaTest {
         testListSub();
         testMap();
         testDeleteRepeat();
+        testStaticVarible();
+        testDividerUsing();
+    }
+
+    /**
+     * 测试分隔符的使用
+     * 1、如果用“.”作为分隔的话,必须是如下写法,String.split("\\."),这样才能正确的分隔开,不能用String.split(".");
+     * 2、如果用“|”作为分隔的话,必须是如下写法,String.split("\\|"),这样才能正确的分隔开,不能用String.split("|");
+     */
+    private void testDividerUsing() {
+        String divider = "";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            sb.append(i + "").append("—").append(i + "").append(divider);
+            divider = "|";
+        }
+        Log.e(TAG, "testDividerUsing: " + sb.toString());
+
+        String divider2 = "";
+        StringBuilder sb2 = new StringBuilder();
+        for (int i = 0; i < 11; i++) {
+            sb2.append(divider2).append(i + "").append("—").append(i + "");
+            divider2 = "|";
+        }
+        Log.e(TAG, "testDividerUsing: " + sb2.toString());
+
+        if (!TextUtils.isEmpty(sb2.toString())) {
+            String[] strArray = sb2.toString().split("\\|");
+            Log.e(TAG, "testDividerUsing: " + new Gson().toJson(strArray));
+        }
+    }
+
+    /**
+     * 测试 修改了静态变量，但是在其它地方没有"起作用"的问题。这个问题已经解决，此处只是修改了非final类型变量，但是后期试图修改final常量，是不可能的，即使final常量由变量组成。
+     */
+    private void testStaticVarible() {
+        if (true) {
+            Constant.IS_RE_SERVE = true;
+        } else {
+            Constant.IS_RE_SERVE = false;
+        }
+
+        if (Constant.IS_RE_SERVE) {
+            Constant.REQUEST_URL = Constant.RE_URL;
+        } else {
+            Constant.REQUEST_URL = Constant.URL;
+        }
+
+        Log.e(TAG, "testStaticVarible: " + Constant.REQUEST_URL);
     }
 
     private void testListSub() {
