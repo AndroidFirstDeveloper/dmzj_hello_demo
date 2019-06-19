@@ -10,7 +10,6 @@
         android:layout_height="0dp" />
 
     <RelativeLayout
-        android:id="@+id/title_bar_layout_title_view"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="@android:color/white">

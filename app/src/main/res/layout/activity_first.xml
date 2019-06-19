@@ -7,7 +7,6 @@
     tools:context=".multistate.FirstActivity">
 
     <TextView
-        android:id="@+id/first_activity_textview"
         android:layout_width="wrap_content"
         android:text="数据展示界面"
         android:layout_centerInParent="true"

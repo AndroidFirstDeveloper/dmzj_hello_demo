@@ -15,14 +15,11 @@
         android:background="@color/colorPrimary"
         app:titleTextColor="@android:color/white" />
 
-    <include
-        android:id="@+id/merge_layout_first"
-        layout="@layout/merge_layout_01" />
+    <include layout="@layout/merge_layout_01" />
 
 
 
     <FrameLayout
-        android:id="@+id/activity_merge_test_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

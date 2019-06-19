@@ -29,7 +29,6 @@ import android.widget.Toast;
 
 
 import com.example.myapplication.R;
-import com.example.myapplication.activity.PictureActivity;
 import com.gyf.barlibrary.BarHide;
 import com.gyf.barlibrary.ImmersionBar;
 
@@ -54,7 +53,6 @@ public class AlbumActivity extends AppCompatActivity implements MediaReadTask.Ca
     public static String PICTURE_SELECTED_LIST = "picture_selected_list";
     public static String PICTURE_CURRENT_SELECTED_INDEX = "picture_current_selected_index";
     public static String REQUEST_CLASS_NAME = "request_class_name";
-
     private int maxSelectSize = 0;
 
     @Override

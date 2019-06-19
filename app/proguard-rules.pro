@@ -1,31 +1,29 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+-keepattributes Signature
+-keep class android.support.v4.** { *; }
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-ignorewarnings
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+-dontwarn android.support.**
+-keepattributes EnclosingMetho
 
--optimizationpasses 5                                                           # 指定代码的压缩级别
--dontusemixedcaseclassnames                                                     # 是否使用大小写混合
--dontskipnonpubliclibraryclasses                                                # 是否混淆第三方jar
--dontpreverify                                                                  # 混淆时是否做预校验
--verbose                                                                        # 混淆时是否记录日志
--optimizations !code/simplification/arithmetic,!field/*,!class/merging/*        # 混淆时所采用的算法
+-keepclassmembers class * {
+   public <init>(org.json.JSONObject);
+}
+
+-assumenosideeffects class android.util.Log {
+   public static *** d(...);
+   public static *** v(...);
+   public static *** i(...);
+   public static *** w(...);
+   public static *** e(...);
+}
 
 -keep public class * extends android.app.Activity                               # 保持哪些类不被混淆
 -keep public class * extends android.app.Application                            # 保持哪些类不被混淆
@@ -35,6 +33,20 @@
 -keep public class * extends android.app.backup.BackupAgentHelper               # 保持哪些类不被混淆
 -keep public class * extends android.preference.Preference                      # 保持哪些类不被混淆
 -keep public class com.android.vending.licensing.ILicensingService              # 保持哪些类不被混淆
+
+
+  # 过滤R文件的混淆：
+-keep class **.R$* {*;}
+
+
+ # 所有方法不进行混淆
+-keep public abstract interface com.huawei.android.airsharing.listener{
+public protected <methods>;
+}
+-keep public abstract interface com.huawei.android.airsharing.api{
+public protected <methods>;
+}
+
 
 -keepclasseswithmembernames class * {                                           # 保持 native 方法不被混淆
     native <methods>;
@@ -61,11 +73,81 @@
   public static final android.os.Parcelable$Creator *;
 }
 
--keep class MyClass                                                            # 保持自己定义的类不被混淆
+#gson
+-keep class **.bean.** { *; }
 
--dontwarn com.tencent.bugly.**
--keep public class com.tencent.bugly.**{*;}
-# tinker混淆规则
--dontwarn com.tencent.tinker.**
--keep class com.tencent.tinker.** { *; }
--keep class android.support.**{*;}
+#webview
+-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+   public *;
+}
+
+#databinding
+-dontwarn android.databinding.**
+-keep class android.databinding.** { *; }
+
+# OkHttp3
+-dontwarn com.squareup.okhttp3.**
+-keep class com.squareup.okhttp3.** { *;}
+-dontwarn okio.**
+
+# Okio
+-dontwarn com.squareup.**
+-dontwarn okio.**
+-keep public class org.codehaus.* { *; }
+-keep public class java.nio.* { *; }
+
+# retrofit
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+
+#支付
+-keep class com.alipay.android.app.IAlixPay{*;}
+-keep class com.alipay.android.app.IAlixPay$Stub{*;}
+-keep class com.alipay.android.app.IRemoteServiceCallback{*;}
+-keep class com.alipay.android.app.IRemoteServiceCallback$Stub{*;}
+-keep class com.alipay.sdk.app.PayTask{ public *;}
+-keep class com.alipay.sdk.app.AuthTask{ public *;}
+
+
+#rx
+-dontwarn sun.misc.**
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+-dontnote rx.internal.util.PlatformDependent
+
+#eventBus
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+# Only required if you use AsyncExecutor
+-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
+    <init>(Java.lang.Throwable);
+}
+
+
+-keep class org.greenrobot.greendao.**{*;}
+-keep public interface org.greenrobot.greendao.**
+-keepclassmembers class * extends org.greenrobot.greendao.AbstractDao {
+public static java.lang.String TABLENAME;
+}
+-keep class **$Properties
+-keep class net.sqlcipher.database.**{*;}
+-keep public interface net.sqlcipher.database.**
+-dontwarn net.sqlcipher.database.**
+-dontwarn org.greenrobot.greendao.**
+
+#项目本身
+#-keep class com.tecsun.mobileintegration.** {*;}
+#-keep public class com.tecsun.base.** { *; }
+#-keep public class com.tecsun.tsb.network.** { *; }
+#-keep public class com.andview.refreshview.** { *; }

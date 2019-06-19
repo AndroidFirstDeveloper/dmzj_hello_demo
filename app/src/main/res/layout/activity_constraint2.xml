@@ -95,7 +95,6 @@
             app:layout_constraintTop_toBottomOf="@+id/activity_constraint_iv4" />
 
         <ImageView
-            android:id="@+id/activity_constraint_iv6"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"

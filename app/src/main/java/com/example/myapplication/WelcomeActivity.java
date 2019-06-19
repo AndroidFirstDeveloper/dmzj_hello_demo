@@ -30,7 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
         MyHandler handler = new MyHandler(this);
         Message message = new Message();
         message.what = 1000;
-        handler.sendMessageDelayed(message, 1000);
+        handler.sendMessageDelayed(message, 10);
     }
 
     private void exit() {

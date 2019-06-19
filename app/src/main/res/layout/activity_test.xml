@@ -125,7 +125,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/activity_test_button3"
             android:layout_weight="1"
             android:text="C"
             android:background="@android:color/holo_red_dark"
@@ -135,7 +134,6 @@
             android:layout_height="48dp" />
 
         <Button
-            android:id="@+id/activity_test_button4"
             android:layout_weight="2"
             android:background="@android:color/holo_blue_dark"
             android:text="D"
@@ -152,7 +150,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/activity_test_button5"
             android:text="E"
             android:background="@android:color/holo_red_dark"
             android:textSize="16sp"
@@ -161,7 +158,6 @@
             android:layout_height="48dp" />
 
         <Button
-            android:id="@+id/activity_test_button6"
             android:background="@android:color/holo_blue_dark"
             android:text="F"
             android:textSize="16sp"
@@ -177,7 +173,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/activity_test_button7"
             android:layout_weight="1"
             android:text="E"
             android:background="@android:color/holo_red_dark"
@@ -187,7 +182,6 @@
             android:layout_height="48dp" />
 
         <Button
-            android:id="@+id/activity_test_button8"
             android:layout_weight="2"
             android:background="@android:color/holo_blue_dark"
             android:text="F"

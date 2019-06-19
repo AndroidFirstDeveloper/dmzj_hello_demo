@@ -5,4 +5,18 @@
     <string name="album_all_images">所有图片</string>
     <string name="album_all_videos">所有视频</string>
     <string name="album_all_images_videos">所有图片和视频</string>
+
+    <string name="quit">退出</string>
+    <string name="settings">设置</string>
+
+    <string name="help">帮助</string>
+    <string name="string_help_text">当前应用缺少必要权限。\n请点击"设置"-"权限"-打开所需权限。\n最后点击两次后退按钮，即可返回。</string>
+
+
+    <string name="dispatch_conclusion">红色：viewgroup1  绿色：viewgroup2  蓝色：view1
+        \n\n结论1：如果在某个控件的dispatchTouchEvent 返回true消费终结事件，那么收到ACTION_DOWN 的函数也能收到 ACTION_MOVE和ACTION_UP。直白的说就是消费down事件的view的父view也能收到后续的move、up事件(从而使得父级view有机会拦截事件)；view以及它的父级view的onTouch、onIntercept方法都不会执行。
+     \n\n  结论2：在哪个View的onTouchEvent 返回true，那么ACTION_MOVE和ACTION_UP的事件从上往下(父级到子级)传到这个View后就不再往下（子级view）传递了，而直接传给自己的onTouchEvent (不会再调用该view的拦截方法)并结束本次事件传递过程。
+      \n\n  结论3：ACTION_DOWN事件在哪个控件消费了（return true），  那么ACTION_MOVE和ACTION_UP就会从上往下(父级view到子级view)做事件分发往下传，就只会传到这个控件，不会继续往下传。如果ACTION_DOWN事件是在dispatchTouchEvent消费，那么事件到此为止停止传递（不会调用touch、intercept方法），如果ACTION_DOWN事件是在onTouchEvent消费的，那么会把ACTION_MOVE或ACTION_UP事件传给该控件的onTouchEvent处理并结束传递（同时父级view的dispatch、intercept也会收到这两个事件）。
+        \n\n补充：当在dispatch、ontouch、intercept中调用super时，如果view是可点击的话，事件自己消费，否则向上反馈事件。
+    </string>
 </resources>

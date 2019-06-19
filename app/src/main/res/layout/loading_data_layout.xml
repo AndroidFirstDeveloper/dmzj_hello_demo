@@ -4,7 +4,6 @@
     android:layout_height="match_parent">
 
     <ProgressBar
-        android:id="@+id/loading_data_layout_progressbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

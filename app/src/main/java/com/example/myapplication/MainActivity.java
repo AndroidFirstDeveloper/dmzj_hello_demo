@@ -2,17 +2,24 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.SystemClock;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.example.myapplication.activity.BannerActivity;
 import com.example.myapplication.activity.BannerActivity2;
 import com.example.myapplication.activity.BannerTestActivity;
+import com.example.myapplication.activity.CacheImageActivity;
 import com.example.myapplication.activity.ConstraintActivity;
 import com.example.myapplication.activity.DefineToastActivity;
 import com.example.myapplication.activity.DotActivity;
@@ -20,11 +27,15 @@ import com.example.myapplication.activity.FragmentLifeCycleActivity;
 import com.example.myapplication.activity.GitUsingActivity;
 import com.example.myapplication.activity.GroupActivity;
 import com.example.myapplication.activity.GuideActivity;
+import com.example.myapplication.activity.ImageCompressActivity;
+import com.example.myapplication.activity.ImageLayerActivity;
 import com.example.myapplication.activity.LaunchModelActivity;
+import com.example.myapplication.activity.LifeCycleActivity1;
 import com.example.myapplication.activity.ListActivity;
 import com.example.myapplication.activity.PictureActivity;
 import com.example.myapplication.activity.SaveTestActivity;
 import com.example.myapplication.activity.ScrollViewActivity;
+import com.example.myapplication.activity.ServiceTestActivity;
 import com.example.myapplication.activity.WebActivity;
 import com.example.myapplication.browse.BrowseActivity1;
 import com.example.myapplication.coordinator.CoordinatorActivity1;
@@ -37,14 +48,24 @@ import com.example.myapplication.matrixtest.MatrixTestActivity;
 import com.example.myapplication.multiclick.MultiClickActivity;
 import com.example.myapplication.multistate.FirstActivity;
 import com.example.myapplication.multistate.TestActivity;
+import com.example.myapplication.okhttp.OkHttpSingletonHelper;
+import com.example.myapplication.permission.WelcomeActivity;
 import com.example.myapplication.recyclerview.RecyclerViewActivity;
 import com.example.myapplication.refresh.RefreshLoadActivity;
 import com.example.myapplication.screenchange.ScreenActivity;
 import com.example.myapplication.zoomtest.EffectImageViewActivity;
 import com.example.myapplication.zoomtest.ZoomImageActivity;
+import com.google.gson.Gson;
+import com.tencent.tinker.android.dx.util.Hex;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.Call;
 
 
 /**
@@ -69,7 +90,8 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     private int number;
-
+    private static final String TAG = "MainActivity";
+    private static boolean looperFlag = true;
     private List<ActivityBean> list = new ArrayList<>();
 
     @Override
@@ -77,12 +99,241 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 //        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
-        testBreakPoint();
-        testPropertyBPoint();
+//        testBreakPoint();
+//        testPropertyBPoint();
         initData();
         findViews();
-        initPage();
-        new JavaTest();
+//        initPage();
+//        new JavaTest();
+//        testStringReplace();
+//        netRequest();
+//        testMap();
+//        testThread();
+//        testThreadNotifyWait();
+//        testThreadLocalUse();
+    }
+
+
+    /**
+     * 学习ThreadLocal的使用(ThreadLocal的作用主要是，变量在线程间隔离，在一个线程的多个方法间共享)
+     * treadLocal不是为了解决并发同步用的，是为了隔离变量用的。同步是为了让多个线程共同操作一个对象而不乱掉
+     */
+    static ThreadLocal<StringBuilder> threadLocal = new ThreadLocal<StringBuilder>() {
+        @Override
+        protected StringBuilder initialValue() {
+            return new StringBuilder();
+        }
+    };
+
+    private void testThreadLocalUse() {
+        new TestLocalThread("0").start();
+        new TestLocalThread("1").start();
+        new TestLocalThread("2").start();
+    }
+
+    private static class TestLocalThread extends Thread {
+
+        public TestLocalThread(String name) {
+            setName(name);
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            for (int i = 0; i < 3; i++) {
+                add(String.valueOf(i));
+                print();
+            }
+            threadLocal.remove();
+        }
+
+        private void add(String value) {
+            StringBuilder sb = threadLocal.get();
+            sb.append(value);
+            threadLocal.set(sb);
+        }
+
+        private void set(String value) {
+            StringBuilder sb = new StringBuilder(value);
+            threadLocal.set(sb);
+        }
+
+        private void print() {
+            Log.e(TAG, "thread " + Thread.currentThread().getName() + "\thashCode1：" + threadLocal.hashCode() + "\thashCode2：" + threadLocal.get().hashCode() + "\tcontent：" + threadLocal.get().toString());
+        }
+    }
+
+    private static String lock = "zhangsan";
+    static boolean downloadFinish = false;
+
+    /**
+     * 测试多线程通知和等待
+     */
+    private void testThreadNotifyWait() {
+        StorageThread storageThread = new StorageThread("storage", lock);
+        storageThread.start();
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        DownloadThread downloadThread = new DownloadThread("download", lock);
+        downloadThread.start();
+    }
+
+    /**
+     * 下载线程，模拟下载
+     */
+    private static class DownloadThread extends Thread {
+
+        private String lock;
+
+        public DownloadThread(String name, String lock) {
+            this.lock = lock;
+            setName(name);
+        }
+
+        public void run() {
+            synchronized (lock) {
+                Log.e(TAG, "开始下载文件...");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Log.e(TAG, "下载完成");
+                downloadFinish = true;
+                try {
+                    lock.notify();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     * 存储线程，模拟存储
+     */
+    private static class StorageThread extends Thread {
+        private String lock;
+
+        public StorageThread(String name, String lock) {
+            this.lock = lock;
+            setName(name);
+        }
+
+        public void run() {
+            synchronized (lock) {
+                if (Thread.holdsLock(lock)) {//检测一个线程是否持有对象监视器
+                    Log.e(TAG, Thread.currentThread().getName() + " Thread hold the monitor");
+                }
+                Log.e(TAG, "准备存储文件");
+                while (!downloadFinish) {
+                    try {
+                        Log.e(TAG, "没有下载完毕，进行等待...");
+                        lock.wait();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                Log.e(TAG, "开始存储文件...");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Log.e(TAG, "存储完成");
+            }
+        }
+    }
+
+
+    /**
+     * 测试多线程的同步问题
+     */
+    private void testThread() {
+
+        String lock = new String("thread");
+        //启动等待线程
+        WaitThread waitThread = new WaitThread(lock, "WaitThread");
+        waitThread.start();
+        //主线程休眠1秒
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Log.e(TAG, "testThread: ", e);
+        }
+        //启动通知线程
+        NotifyThread notifyThread = new NotifyThread(lock, "NotifyThread");
+        notifyThread.start();
+
+    }
+
+
+    private static class WaitThread extends Thread {
+
+        private String lock;
+
+        public WaitThread(String lock, String name) {
+            setName(name);
+            this.lock = lock;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            synchronized (lock) {
+                try {
+                    while (looperFlag) {
+                        final long startTime = SystemClock.elapsedRealtime();
+                        Log.e(TAG, "run: Thread Name is " + Thread.currentThread().getName() + "\t\tCurrentTime=" + startTime);
+                        lock.wait();
+                        final long endTime = SystemClock.elapsedRealtime();
+                        Log.e(TAG, "run: Thread Name is " + Thread.currentThread().getName() + "\t\tCurrentTime=" + endTime + "\t线程执行耗时=" + (endTime - startTime) + "ms");
+                    }
+                } catch (InterruptedException e) {
+                    Log.e(TAG, "run: ", e);
+                }
+            }
+        }
+    }
+
+    private static class NotifyThread extends Thread {
+
+        private String lock;
+
+        public NotifyThread(String lock, String name) {
+            setName(name);
+            this.lock = lock;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+            synchronized (lock) {
+                try {
+                    Log.e(TAG, "run: Thread Name is " + Thread.currentThread().getName() + "\t\tCurrentTime=" + SystemClock.elapsedRealtime());
+                    lock.notify();
+                    Thread.sleep(5000);
+                    looperFlag = false;
+                } catch (InterruptedException e) {
+                    Log.e(TAG, "run: ", e);
+                }
+            }
+        }
+    }
+
+
+    private void testStringReplace() {
+        String url = "https://user.myfcomic.com/api/getuserinfo";
+        String url2 = "https://user.myfcomic.com/api/getuserinfo";
+
+        url = url.replace("user", "reuser");
+        url2 = url2.replaceFirst("user", "reuser");
+
+        Log.e(TAG, "testStringReplace:url= " + url);
+        Log.e(TAG, "testStringReplace:url2= " + url2);
     }
 
     private void initPage() {
@@ -293,6 +544,35 @@ public class MainActivity extends Activity {
         bean40.setName("分组列表");
         bean40.setActivity(GroupActivity.class);
         list.add(bean40);
+
+        ActivityBean bean41 = new ActivityBean();
+        bean41.setName("动态权限请求");
+        bean41.setActivity(WelcomeActivity.class);
+        list.add(bean41);
+
+        ActivityBean bean42 = new ActivityBean();
+        bean42.setName("图片叠加");
+        bean42.setActivity(ImageLayerActivity.class);
+        list.add(bean42);
+
+        ActivityBean bean43 = new ActivityBean();
+        bean43.setName("图片压缩");
+        bean43.setActivity(ImageCompressActivity.class);
+        list.add(bean43);
+        ActivityBean bean44 = new ActivityBean();
+        bean44.setName("图片缓存");
+        bean44.setActivity(CacheImageActivity.class);
+        list.add(bean44);
+
+        ActivityBean bean45 = new ActivityBean();
+        bean45.setName("Android组件生命周期测试");
+        bean45.setActivity(LifeCycleActivity1.class);
+        list.add(bean45);
+
+        ActivityBean bean46 = new ActivityBean();
+        bean46.setName("Service测试");
+        bean46.setActivity(ServiceTestActivity.class);
+        list.add(bean46);
     }
 
     private void findViews() {
@@ -342,5 +622,49 @@ public class MainActivity extends Activity {
     public void matrixTestPage(View view) {
         Intent intent = new Intent(this, MatrixTestActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * 测试字符串转换为16进制
+     */
+    private void netRequest() {
+        final String url = "https://myfcomicadmin.oss-cn-hangzhou.aliyuncs.com/test/3.txt";
+        OkHttpSingletonHelper.getInstance().requestGetBySync(getApplicationContext(), url, null, new OkHttpSingletonHelper.GetCallback() {
+            @Override
+            public void success(Call call, String result) {
+                String hexStr = HexUtil.str2HexStr(result);
+                Log.e(TAG, "success: " + hexStr);
+                String originStr = HexUtil.hexStr2Str(hexStr);
+                Log.e(TAG, "success: " + originStr);
+            }
+
+            @Override
+            public void failed(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void netError(String note) {
+
+            }
+        });
+    }
+
+
+    private void testMap() {
+        Map<Integer, String> map = new HashMap<>();
+        map.put(null, "first");
+
+        for (int i = 0; i < 50; i++) {
+            map.put(i, "item" + i);
+        }
+        Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, String> entry = iterator.next();
+            Log.e(TAG, "testMap: key=" + entry.getKey() + "\t\tvalue=" + entry.getValue());
+        }
+
+        Log.e(TAG, "testMap: map contain key==null " + map.containsKey(null));
+//        Log.e(TAG, "testMap: " + new Gson().toJson(map));
     }
 }

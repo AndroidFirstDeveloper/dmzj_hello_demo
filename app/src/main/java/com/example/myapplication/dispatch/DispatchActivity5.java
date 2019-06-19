@@ -95,8 +95,8 @@ public class DispatchActivity5 extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nextmenu_next:
-//                Intent intent = new Intent(DispatchActivity4.this, DispatchActivity5.class);
-//                startActivity(intent);
+                Intent intent = new Intent(DispatchActivity5.this, DispatchActivity6.class);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);

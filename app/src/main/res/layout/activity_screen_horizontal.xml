@@ -50,7 +50,6 @@
         app:layout_constraintTop_toBottomOf="@+id/activity_screen_edit1" />
 
     <TextView
-        android:id="@+id/activity_screen_label_tv"
         android:layout_width="0dp"
         android:layout_height="40dp" />
 

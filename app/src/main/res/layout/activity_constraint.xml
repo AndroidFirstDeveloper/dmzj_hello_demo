@@ -535,7 +535,6 @@
             app:layout_constraintTop_toBottomOf="@+id/activity_constraint_button28" />
 
         <TextView
-            android:id="@+id/activity_constraint_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="姓名："
@@ -546,7 +545,6 @@
             app:layout_constraintTop_toTopOf="@+id/activity_constraint_name_et" />
 
         <TextView
-            android:id="@+id/activity_constraint_contact_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="联系方式："

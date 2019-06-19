@@ -8,17 +8,14 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.provider.Settings;
-import android.support.multidex.MultiDexApplication;
-import android.telecom.TelecomManager;
-import android.telephony.TelephonyManager;
+
 import android.util.Log;
 
 import com.example.myapplication.gen.DaoMaster;
 import com.example.myapplication.gen.DaoSession;
 import com.example.myapplication.greendaotest.helper.MyOpenHelper;
-import com.tencent.tinker.loader.app.TinkerApplication;
-import com.tencent.tinker.loader.shareutil.ShareConstants;
+
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import java.net.URL;
 import java.net.URLConnection;
@@ -35,6 +32,7 @@ public class SampleApplication extends Application {
     public void onCreate() {
         super.onCreate();
 //        MFDotUtil.setupDataBase(this);
+        ZXingLibrary.initDisplayOpinion(this);
         listenLifeRecycle();
         setupDatabase();
     }
@@ -80,7 +78,7 @@ public class SampleApplication extends Application {
 
 //                    Log.d(TAG, "onActivityCreated: deviceId=" + com.example.myapplication.Utils.getDeviceUniqueId());
 
-                    com.example.myapplication.Utils.getDeviceUniqueId(getApplicationContext());
+//                    com.example.myapplication.Utils.getDeviceUniqueId(getApplicationContext());
                 }
             }
 
