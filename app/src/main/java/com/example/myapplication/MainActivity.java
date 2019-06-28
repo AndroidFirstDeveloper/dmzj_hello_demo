@@ -9,6 +9,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.os.SystemClock;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,6 +37,7 @@ import com.example.myapplication.activity.PictureActivity;
 import com.example.myapplication.activity.SaveTestActivity;
 import com.example.myapplication.activity.ScrollViewActivity;
 import com.example.myapplication.activity.ServiceTestActivity;
+import com.example.myapplication.activity.VPRecyclerViewActivity;
 import com.example.myapplication.activity.WebActivity;
 import com.example.myapplication.browse.BrowseActivity1;
 import com.example.myapplication.coordinator.CoordinatorActivity1;
@@ -58,14 +60,30 @@ import com.example.myapplication.zoomtest.ZoomImageActivity;
 import com.google.gson.Gson;
 import com.tencent.tinker.android.dx.util.Hex;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.Interceptor;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 /**
@@ -111,8 +129,90 @@ public class MainActivity extends Activity {
 //        testThread();
 //        testThreadNotifyWait();
 //        testThreadLocalUse();
+//        testProducerAndConsumer();
+        testOkHttpUse2();
     }
 
+
+    /**
+     * 学习生产者消费者模式
+     */
+    private ExecutorService executorService;
+
+    private void testProducerAndConsumer() {
+        LinkedList list = new LinkedList();
+        executorService = Executors.newFixedThreadPool(15);
+        for (int i = 0; i < 5; i++) {
+            executorService.submit(new Producer(list, 8));
+        }
+        for (int i = 0; i < 10; i++) {
+            executorService.submit(new Consumer(list));
+        }
+    }
+
+    private static class Producer implements Runnable {
+        private final String TAG = "Producer";
+        private List<Integer> list;
+        private int maxCapacity;
+
+        public Producer(List list, int maxCapacity) {
+            this.list = list;
+            this.maxCapacity = maxCapacity;
+        }
+
+        @Override
+        public void run() {
+            while (true) {
+                synchronized (list) {
+                    while (list.size() == maxCapacity) {
+                        Log.e(TAG, Thread.currentThread().getName() + "  仓库已满，进入等待");
+                        try {
+                            list.wait();
+                        } catch (InterruptedException e) {
+                            Log.e(TAG, "run: ", e);
+                        }
+                        Log.e(TAG, Thread.currentThread().getName() + " 退出等待");
+                    }
+
+                    Random random = new Random();
+                    final int element = random.nextInt();
+                    list.add(element);
+                    Log.e(TAG, Thread.currentThread().getName() + " 仓库未满，生成一条数据：" + element);
+                    list.notifyAll();
+                }
+            }
+        }
+    }
+
+    private static class Consumer implements Runnable {
+        private final String TAG = "Consumer";
+        private List<Integer> list;
+
+        public Consumer(List list) {
+            this.list = list;
+        }
+
+        @Override
+        public void run() {
+            while (true) {
+                synchronized (list) {
+                    while (list.isEmpty()) {
+                        Log.e(TAG, Thread.currentThread().getName() + " 仓库已空，进入等待");
+                        try {
+                            list.wait();
+                        } catch (InterruptedException e) {
+                            Log.e(TAG, "run: ", e);
+                        }
+                        Log.e(TAG, Thread.currentThread().getName() + " 退出等待");
+                    }
+
+                    Integer element = list.remove(0);
+                    Log.e(TAG, Thread.currentThread().getName() + " 仓库未空，消费一条数据 " + element);
+                    list.notifyAll();
+                }
+            }
+        }
+    }
 
     /**
      * 学习ThreadLocal的使用(ThreadLocal的作用主要是，变量在线程间隔离，在一个线程的多个方法间共享)
@@ -573,6 +673,11 @@ public class MainActivity extends Activity {
         bean46.setName("Service测试");
         bean46.setActivity(ServiceTestActivity.class);
         list.add(bean46);
+
+        ActivityBean bean47 = new ActivityBean();
+        bean47.setName("RecyclerView实现VP效果");
+        bean47.setActivity(VPRecyclerViewActivity.class);
+        list.add(bean47);
     }
 
     private void findViews() {
@@ -666,5 +771,173 @@ public class MainActivity extends Activity {
 
         Log.e(TAG, "testMap: map contain key==null " + map.containsKey(null));
 //        Log.e(TAG, "testMap: " + new Gson().toJson(map));
+    }
+
+
+    private void testOkHttpUse() {
+        //创建异步get请求
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url("")
+                .addHeader("", "")
+                .get()
+                .build();
+        Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
+
+        //创能异步post请求，请求参数为string
+        OkHttpClient client1 = new OkHttpClient();
+        RequestBody requestBody = RequestBody.create(MediaType.parse(""), "");
+        Request request1 = new Request.Builder()
+                .addHeader("", "")
+                .url("")
+                .post(requestBody)
+                .build();
+        Call call1 = client1.newCall(request1);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
+
+        //创建异步post请求，请求参数是file
+        OkHttpClient client2 = new OkHttpClient();
+        RequestBody requestBody1 = RequestBody.create(MediaType.parse(""), new File("log.txt"));
+        Request request2 = new Request.Builder()
+                .addHeader("", "")
+                .url("")
+                .post(requestBody1)
+                .build();
+        Call call2 = client2.newCall(request2);
+        call2.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
+
+        //创建post异步请求，请求参数是form表单
+        OkHttpClient client3 = new OkHttpClient();
+        RequestBody requestBody2 = new FormBody.Builder()
+                .add("key", "value")
+                .add("key", "value")
+                .add("key3", "value3")
+                .build();
+
+        Request request3 = new Request.Builder()
+                .addHeader("", "")
+                .url("")
+                .post(requestBody2)
+                .build();
+        Call call3 = client3.newCall(request3);
+        call3.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
+
+
+        //创建post异步请求，分块进行请求
+        OkHttpClient client4 = new OkHttpClient();
+        MultipartBody multipartBody = new MultipartBody.Builder()
+                .addPart(Headers.of("Content-Disposition", "form-data; name=\"title\""), RequestBody.create(MediaType.parse(""), "jljdfajkdfja"))
+                .addPart(Headers.of("Content-Disposition", "form-data; name=\"title\""), RequestBody.create(MediaType.parse(""), new File("myfcomic/chapter1/poster.png")))
+                .build();
+        Request request4 = new Request.Builder()
+                .addHeader("", "")
+                .url("")
+                .post(multipartBody)
+                .build();
+        Call call4 = client4.newCall(request4);
+        call4.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
+    }
+
+
+    private void testOkHttpUse2() {
+        final String url = "http://www.publicobject.com/helloworld.txt";
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(new LoggingInterceptor()).build();
+        Request request = new Request.Builder()
+                .get()
+                .url(url)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+//                Log.e(TAG, "onFailure: ");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+//                Log.e(TAG, "onResponse: ");
+            }
+        });
+    }
+
+    private static class LoggingInterceptor implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) {
+            Request request = chain.request();
+            long startTime = SystemClock.elapsedRealtime();
+            Log.e(TAG, "url= " + request.url() + "\theaders=" + request.headers() + "\tconnection=" + chain.connection());
+            Response response = null;
+            try {
+                response = chain.proceed(request);
+                long endTime = SystemClock.elapsedRealtime();
+                Log.e(TAG, "url=" + response.request().url() + "\theader=" + response.headers());
+                Log.e(TAG, "resonse body=" + response.body().string());
+
+                Log.e(TAG, "耗时=" + (endTime - startTime) + "ms");
+            } catch (IOException e) {
+                Log.e(TAG, "intercept: ", e);
+            }
+            return response;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (executorService != null && !executorService.isShutdown()) {
+            executorService.shutdownNow();
+            Log.e(TAG, "onDestroy: 关闭生产者消费者模型");
+        }
+        executorService = null;
+        super.onDestroy();
     }
 }

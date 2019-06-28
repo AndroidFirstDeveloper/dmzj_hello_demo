@@ -97,7 +97,7 @@ android {
             signingConfig signingConfigs.debug
         }
 
-        sit{
+        sit {
             debuggable true
         }
     }

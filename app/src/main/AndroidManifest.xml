@@ -399,12 +399,18 @@
             android:description="@string/string_help_text"
             android:enabled="true"
             android:exported="true"
-            android:process=":remote"
-            android:label="demoservice">
+            android:label="demoservice"
+            android:process=":remote">
             <intent-filter android:priority="1000">
                 <action android:name="com.example.myservice" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".activity.VPRecyclerViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
